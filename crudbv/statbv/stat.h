@@ -35,6 +35,7 @@ char UserPassword[20];}UserMAG;
 
 
 int nbe( char * filename, int  id );
+float TVB (char * filename);
 void taux ( char * filename , float * tn, float * te);
 
 

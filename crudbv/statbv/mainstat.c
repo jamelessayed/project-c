@@ -2,8 +2,8 @@
 #include <string.h>
 #include "stat.h"
 int main()
-{ int n ;
-float tn,te;
+{ int n  ;
+float tn,te,y;
 /*observateurMG o1={1,"jamel","essayed","tunisienne","etudiant",1,4,4,2000};
 observateurMG o2={1,"houssem","bouechri","marrocan","etudiant",1,2,4,2010};
 observateurMG o3={1,"houssem","henchri","gafsi","etudiant",1,4,4,2020};
@@ -26,6 +26,10 @@ printf("\nla nbre des electeures est %d dans le bureau 12\n",n);
 
 taux ("obs.txt",&tn,&te);
 printf("\nle taux des obs tunisiennes %.2f %% ,et le taux des obs etranges %.2f %%\n",tn,te);
+y=TVB("user.txt");
+
+printf("\nle taux de votes blancs est %.2f %% \n",y);
+
  
 
 

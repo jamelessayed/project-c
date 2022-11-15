@@ -15,6 +15,7 @@ int nbe( char * filename, int id ){
                     {
                   if (u.UserVote==1)
 			n = n+1 ;
+                  
                 
 
                     }
@@ -50,4 +51,42 @@ FILE * f=fopen(filename,"r");
      }
     fclose(f);
 }
+
+float TVB (char * filename) { 
+
+    int  n=0;
+    float tvb=0;
+    UserMAG u;
+    FILE * f=fopen(filename,"r");
+    if(f!=NULL)
+    {
+        while(fscanf(f,"%s %s %d %d %d %d %d %d %d %d %s %s ",u.UserNom,u.UserPrenom,&u.UserCIN,&u.UserNumBV,&u.UserRole,&u.UserGenre,&u.UserVote,&u.UserDate.JourUser,&u.UserDate.MoisUser,&u.UserDate.AnneeUser,u.UserLogin,u.UserPassword)!=EOF)
+                  {
+                  if (u.UserVote!=-1)
+			n=n+1;
+             
+                  if (u.UserVote==0)
+			tvb = tvb+1 ;
+                  
+                
+                   }
+
+
+        tvb=(tvb/n)*100;
+
+      }
+fclose(f);
+
+
+   
+   return tvb ;
+}
+
+
+
+
+
+
+
+
 
