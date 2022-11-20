@@ -1,0 +1,38 @@
+void
+on_button_ajout_bv_JE_clicked          (GtkButton       *objet, gpointer  user_data)
+{
+int a;
+GtkWidget *id_bv,*id_ag,*munic,*ecole,*num_salle,*cap_obs,*cap_elect;
+bureau b;
+
+
+
+id_bv=lookup_widget(objet,"entry_id_bv_JE");
+id_ag=lookup_widget(objet,"combo_id_ag_JE");
+munic=lookup_widget(objet,"combo_munic_JE");
+ecole=lookup_widget(objet,"combo_ecol_JE");
+num_salle=lookup_widget(objet,"spin_num_sal_JE");
+cap_obs=lookup_widget(objet,"spin_cap_obs_JE");
+cap_elect=lookup_widget(objet,"spin_cap_elec_JE");
+
+
+
+
+b.id_bureau=atoi(gtk_entry_get_text(GTK_ENTRY(id_bv)));
+b.id_agent=atoi(gtk_entry_get_text(GTK_ENTRY(id_ag)));
+
+strcpy(b.municipalite,gtk_combo_box_get_active_text(GTK_COMBO_BOX(munic)));
+strcpy(b.ecole,gtk_combo_box_get_active_text(GTK_COMBO_BOX(ecole)));
+
+b.num_salle= (int)gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(num_salle));
+b.capacite_des_observateurs= (int)gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(cap_obs));
+b.capacite_des_electeurs= (int)gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(cap_elect));
+
+
+a=ajouter(b);
+if (a==1)
+	gtk_label_set_text(GTK_LABEL(sortie),"ajout avec succes");
+
+
+
+}
