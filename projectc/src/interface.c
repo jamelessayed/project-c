@@ -1493,14 +1493,15 @@ create_jamel2 (void)
 {
   GtkWidget *jamel2;
   GtkWidget *fixed11_JE;
-  GtkWidget *label1_JE;
   GtkWidget *entry_recher_bv_JE;
-  GtkWidget *treeview_bv;
-  GtkWidget *label29_JE;
-  GtkWidget *button_return_affic_bv_JE;
-  GtkWidget *image39_JE;
+  GtkWidget *treebv;
   GtkWidget *button_recher_affic_bv_JE;
   GtkWidget *image42;
+  GtkWidget *button_supp_affic_bv_JE;
+  GtkWidget *alignment25;
+  GtkWidget *hbox25;
+  GtkWidget *image36_JE;
+  GtkWidget *label68JE;
   GtkWidget *button_modif_affic_bv_JE;
   GtkWidget *alignment24;
   GtkWidget *hbox24;
@@ -1511,11 +1512,10 @@ create_jamel2 (void)
   GtkWidget *hbox43;
   GtkWidget *image64_JE;
   GtkWidget *label103;
-  GtkWidget *button_supp_affic_bv_JE;
-  GtkWidget *alignment25;
-  GtkWidget *hbox25;
-  GtkWidget *image36_JE;
-  GtkWidget *label68JE;
+  GtkWidget *label29_JE;
+  GtkWidget *button_return_affic_bv_JE;
+  GtkWidget *image39_JE;
+  GtkWidget *label1_JE;
 
   jamel2 = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (jamel2), _("affichage bureau"));
@@ -1524,36 +1524,16 @@ create_jamel2 (void)
   gtk_widget_show (fixed11_JE);
   gtk_container_add (GTK_CONTAINER (jamel2), fixed11_JE);
 
-  label1_JE = gtk_label_new (_("Gestion du Bureau de Vote :"));
-  gtk_widget_show (label1_JE);
-  gtk_fixed_put (GTK_FIXED (fixed11_JE), label1_JE, 40, 32);
-  gtk_widget_set_size_request (label1_JE, 216, 40);
-
   entry_recher_bv_JE = gtk_entry_new ();
   gtk_widget_show (entry_recher_bv_JE);
   gtk_fixed_put (GTK_FIXED (fixed11_JE), entry_recher_bv_JE, 544, 112);
   gtk_widget_set_size_request (entry_recher_bv_JE, 160, 32);
   gtk_entry_set_invisible_char (GTK_ENTRY (entry_recher_bv_JE), 8226);
 
-  treeview_bv = gtk_tree_view_new ();
-  gtk_widget_show (treeview_bv);
-  gtk_fixed_put (GTK_FIXED (fixed11_JE), treeview_bv, 112, 184);
-  gtk_widget_set_size_request (treeview_bv, 300, 200);
-
-  label29_JE = gtk_label_new (_("Les bureaux :"));
-  gtk_widget_show (label29_JE);
-  gtk_fixed_put (GTK_FIXED (fixed11_JE), label29_JE, 64, 112);
-  gtk_widget_set_size_request (label29_JE, 136, 48);
-  gtk_misc_set_padding (GTK_MISC (label29_JE), 2, 0);
-
-  button_return_affic_bv_JE = gtk_button_new ();
-  gtk_widget_show (button_return_affic_bv_JE);
-  gtk_fixed_put (GTK_FIXED (fixed11_JE), button_return_affic_bv_JE, 696, 0);
-  gtk_widget_set_size_request (button_return_affic_bv_JE, 66, 29);
-
-  image39_JE = gtk_image_new_from_stock ("gtk-go-back", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image39_JE);
-  gtk_container_add (GTK_CONTAINER (button_return_affic_bv_JE), image39_JE);
+  treebv = gtk_tree_view_new ();
+  gtk_widget_show (treebv);
+  gtk_fixed_put (GTK_FIXED (fixed11_JE), treebv, 8, 160);
+  gtk_widget_set_size_request (treebv, 912, 576);
 
   button_recher_affic_bv_JE = gtk_button_new ();
   gtk_widget_show (button_recher_affic_bv_JE);
@@ -1564,9 +1544,30 @@ create_jamel2 (void)
   gtk_widget_show (image42);
   gtk_container_add (GTK_CONTAINER (button_recher_affic_bv_JE), image42);
 
+  button_supp_affic_bv_JE = gtk_button_new ();
+  gtk_widget_show (button_supp_affic_bv_JE);
+  gtk_fixed_put (GTK_FIXED (fixed11_JE), button_supp_affic_bv_JE, 664, 744);
+  gtk_widget_set_size_request (button_supp_affic_bv_JE, 106, 48);
+
+  alignment25 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment25);
+  gtk_container_add (GTK_CONTAINER (button_supp_affic_bv_JE), alignment25);
+
+  hbox25 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox25);
+  gtk_container_add (GTK_CONTAINER (alignment25), hbox25);
+
+  image36_JE = gtk_image_new_from_stock ("gtk-delete", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image36_JE);
+  gtk_box_pack_start (GTK_BOX (hbox25), image36_JE, FALSE, FALSE, 0);
+
+  label68JE = gtk_label_new_with_mnemonic (_("Supprimer "));
+  gtk_widget_show (label68JE);
+  gtk_box_pack_start (GTK_BOX (hbox25), label68JE, FALSE, FALSE, 0);
+
   button_modif_affic_bv_JE = gtk_button_new ();
   gtk_widget_show (button_modif_affic_bv_JE);
-  gtk_fixed_put (GTK_FIXED (fixed11_JE), button_modif_affic_bv_JE, 256, 472);
+  gtk_fixed_put (GTK_FIXED (fixed11_JE), button_modif_affic_bv_JE, 520, 744);
   gtk_widget_set_size_request (button_modif_affic_bv_JE, 112, 48);
 
   alignment24 = gtk_alignment_new (0.5, 0.5, 0, 0);
@@ -1587,7 +1588,7 @@ create_jamel2 (void)
 
   button_ajout_affic_bv_JE = gtk_button_new ();
   gtk_widget_show (button_ajout_affic_bv_JE);
-  gtk_fixed_put (GTK_FIXED (fixed11_JE), button_ajout_affic_bv_JE, 112, 472);
+  gtk_fixed_put (GTK_FIXED (fixed11_JE), button_ajout_affic_bv_JE, 376, 744);
   gtk_widget_set_size_request (button_ajout_affic_bv_JE, 104, 48);
 
   alignment43 = gtk_alignment_new (0.5, 0.5, 0, 0);
@@ -1606,35 +1607,34 @@ create_jamel2 (void)
   gtk_widget_show (label103);
   gtk_box_pack_start (GTK_BOX (hbox43), label103, FALSE, FALSE, 0);
 
-  button_supp_affic_bv_JE = gtk_button_new ();
-  gtk_widget_show (button_supp_affic_bv_JE);
-  gtk_fixed_put (GTK_FIXED (fixed11_JE), button_supp_affic_bv_JE, 408, 472);
-  gtk_widget_set_size_request (button_supp_affic_bv_JE, 106, 48);
+  label29_JE = gtk_label_new (_("Les bureaux :"));
+  gtk_widget_show (label29_JE);
+  gtk_fixed_put (GTK_FIXED (fixed11_JE), label29_JE, 32, 112);
+  gtk_widget_set_size_request (label29_JE, 136, 48);
+  gtk_misc_set_padding (GTK_MISC (label29_JE), 2, 0);
 
-  alignment25 = gtk_alignment_new (0.5, 0.5, 0, 0);
-  gtk_widget_show (alignment25);
-  gtk_container_add (GTK_CONTAINER (button_supp_affic_bv_JE), alignment25);
+  button_return_affic_bv_JE = gtk_button_new ();
+  gtk_widget_show (button_return_affic_bv_JE);
+  gtk_fixed_put (GTK_FIXED (fixed11_JE), button_return_affic_bv_JE, 1192, 8);
+  gtk_widget_set_size_request (button_return_affic_bv_JE, 66, 29);
 
-  hbox25 = gtk_hbox_new (FALSE, 2);
-  gtk_widget_show (hbox25);
-  gtk_container_add (GTK_CONTAINER (alignment25), hbox25);
+  image39_JE = gtk_image_new_from_stock ("gtk-go-back", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image39_JE);
+  gtk_container_add (GTK_CONTAINER (button_return_affic_bv_JE), image39_JE);
 
-  image36_JE = gtk_image_new_from_stock ("gtk-delete", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image36_JE);
-  gtk_box_pack_start (GTK_BOX (hbox25), image36_JE, FALSE, FALSE, 0);
+  label1_JE = gtk_label_new (_("Gestion du Bureau de Vote :"));
+  gtk_widget_show (label1_JE);
+  gtk_fixed_put (GTK_FIXED (fixed11_JE), label1_JE, 8, 8);
+  gtk_widget_set_size_request (label1_JE, 216, 40);
 
-  label68JE = gtk_label_new_with_mnemonic (_("Supprimer "));
-  gtk_widget_show (label68JE);
-  gtk_box_pack_start (GTK_BOX (hbox25), label68JE, FALSE, FALSE, 0);
-
-  g_signal_connect ((gpointer) treeview_bv, "row_activated",
+  g_signal_connect ((gpointer) treebv, "row_activated",
                     G_CALLBACK (on_treeview_bv_JE_row_activated),
-                    NULL);
-  g_signal_connect ((gpointer) button_return_affic_bv_JE, "clicked",
-                    G_CALLBACK (on_button_return_affic_bv_JE_clicked),
                     NULL);
   g_signal_connect ((gpointer) button_recher_affic_bv_JE, "clicked",
                     G_CALLBACK (on_button_recher_affic_bv_JE_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) button_supp_affic_bv_JE, "clicked",
+                    G_CALLBACK (on_button_supp_affic_bv_JE_clicked),
                     NULL);
   g_signal_connect ((gpointer) button_modif_affic_bv_JE, "clicked",
                     G_CALLBACK (on_button_modif_affic_bv_JE_clicked),
@@ -1642,21 +1642,22 @@ create_jamel2 (void)
   g_signal_connect ((gpointer) button_ajout_affic_bv_JE, "clicked",
                     G_CALLBACK (on_button_ajout_affic_bv_JE_clicked),
                     NULL);
-  g_signal_connect ((gpointer) button_supp_affic_bv_JE, "clicked",
-                    G_CALLBACK (on_button_supp_affic_bv_JE_clicked),
+  g_signal_connect ((gpointer) button_return_affic_bv_JE, "clicked",
+                    G_CALLBACK (on_button_return_affic_bv_JE_clicked),
                     NULL);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
   GLADE_HOOKUP_OBJECT_NO_REF (jamel2, jamel2, "jamel2");
   GLADE_HOOKUP_OBJECT (jamel2, fixed11_JE, "fixed11_JE");
-  GLADE_HOOKUP_OBJECT (jamel2, label1_JE, "label1_JE");
   GLADE_HOOKUP_OBJECT (jamel2, entry_recher_bv_JE, "entry_recher_bv_JE");
-  GLADE_HOOKUP_OBJECT (jamel2, treeview_bv, "treeview_bv");
-  GLADE_HOOKUP_OBJECT (jamel2, label29_JE, "label29_JE");
-  GLADE_HOOKUP_OBJECT (jamel2, button_return_affic_bv_JE, "button_return_affic_bv_JE");
-  GLADE_HOOKUP_OBJECT (jamel2, image39_JE, "image39_JE");
+  GLADE_HOOKUP_OBJECT (jamel2, treebv, "treebv");
   GLADE_HOOKUP_OBJECT (jamel2, button_recher_affic_bv_JE, "button_recher_affic_bv_JE");
   GLADE_HOOKUP_OBJECT (jamel2, image42, "image42");
+  GLADE_HOOKUP_OBJECT (jamel2, button_supp_affic_bv_JE, "button_supp_affic_bv_JE");
+  GLADE_HOOKUP_OBJECT (jamel2, alignment25, "alignment25");
+  GLADE_HOOKUP_OBJECT (jamel2, hbox25, "hbox25");
+  GLADE_HOOKUP_OBJECT (jamel2, image36_JE, "image36_JE");
+  GLADE_HOOKUP_OBJECT (jamel2, label68JE, "label68JE");
   GLADE_HOOKUP_OBJECT (jamel2, button_modif_affic_bv_JE, "button_modif_affic_bv_JE");
   GLADE_HOOKUP_OBJECT (jamel2, alignment24, "alignment24");
   GLADE_HOOKUP_OBJECT (jamel2, hbox24, "hbox24");
@@ -1667,11 +1668,10 @@ create_jamel2 (void)
   GLADE_HOOKUP_OBJECT (jamel2, hbox43, "hbox43");
   GLADE_HOOKUP_OBJECT (jamel2, image64_JE, "image64_JE");
   GLADE_HOOKUP_OBJECT (jamel2, label103, "label103");
-  GLADE_HOOKUP_OBJECT (jamel2, button_supp_affic_bv_JE, "button_supp_affic_bv_JE");
-  GLADE_HOOKUP_OBJECT (jamel2, alignment25, "alignment25");
-  GLADE_HOOKUP_OBJECT (jamel2, hbox25, "hbox25");
-  GLADE_HOOKUP_OBJECT (jamel2, image36_JE, "image36_JE");
-  GLADE_HOOKUP_OBJECT (jamel2, label68JE, "label68JE");
+  GLADE_HOOKUP_OBJECT (jamel2, label29_JE, "label29_JE");
+  GLADE_HOOKUP_OBJECT (jamel2, button_return_affic_bv_JE, "button_return_affic_bv_JE");
+  GLADE_HOOKUP_OBJECT (jamel2, image39_JE, "image39_JE");
+  GLADE_HOOKUP_OBJECT (jamel2, label1_JE, "label1_JE");
 
   return jamel2;
 }

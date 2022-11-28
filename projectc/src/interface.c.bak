@@ -1495,7 +1495,7 @@ create_jamel2 (void)
   GtkWidget *fixed11_JE;
   GtkWidget *label1_JE;
   GtkWidget *entry_recher_bv_JE;
-  GtkWidget *treeview_bv_JE;
+  GtkWidget *treebv;
   GtkWidget *label29_JE;
   GtkWidget *button_return_affic_bv_JE;
   GtkWidget *image39_JE;
@@ -1535,10 +1535,10 @@ create_jamel2 (void)
   gtk_widget_set_size_request (entry_recher_bv_JE, 160, 32);
   gtk_entry_set_invisible_char (GTK_ENTRY (entry_recher_bv_JE), 8226);
 
-  treeview_bv_JE = gtk_tree_view_new ();
-  gtk_widget_show (treeview_bv_JE);
-  gtk_fixed_put (GTK_FIXED (fixed11_JE), treeview_bv_JE, 112, 184);
-  gtk_widget_set_size_request (treeview_bv_JE, 300, 200);
+  treebv = gtk_tree_view_new ();
+  gtk_widget_show (treebv);
+  gtk_fixed_put (GTK_FIXED (fixed11_JE), treebv, 112, 184);
+  gtk_widget_set_size_request (treebv, 300, 200);
 
   label29_JE = gtk_label_new (_("Les bureaux :"));
   gtk_widget_show (label29_JE);
@@ -1627,7 +1627,7 @@ create_jamel2 (void)
   gtk_widget_show (label68JE);
   gtk_box_pack_start (GTK_BOX (hbox25), label68JE, FALSE, FALSE, 0);
 
-  g_signal_connect ((gpointer) treeview_bv_JE, "row_activated",
+  g_signal_connect ((gpointer) treebv, "row_activated",
                     G_CALLBACK (on_treeview_bv_JE_row_activated),
                     NULL);
   g_signal_connect ((gpointer) button_return_affic_bv_JE, "clicked",
@@ -1651,7 +1651,7 @@ create_jamel2 (void)
   GLADE_HOOKUP_OBJECT (jamel2, fixed11_JE, "fixed11_JE");
   GLADE_HOOKUP_OBJECT (jamel2, label1_JE, "label1_JE");
   GLADE_HOOKUP_OBJECT (jamel2, entry_recher_bv_JE, "entry_recher_bv_JE");
-  GLADE_HOOKUP_OBJECT (jamel2, treeview_bv_JE, "treeview_bv_JE");
+  GLADE_HOOKUP_OBJECT (jamel2, treebv, "treebv");
   GLADE_HOOKUP_OBJECT (jamel2, label29_JE, "label29_JE");
   GLADE_HOOKUP_OBJECT (jamel2, button_return_affic_bv_JE, "button_return_affic_bv_JE");
   GLADE_HOOKUP_OBJECT (jamel2, image39_JE, "image39_JE");

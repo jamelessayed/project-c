@@ -94,8 +94,8 @@ ID_AGENT,
 NUM_SALLE,
 CAPACITE_DES_OBSERVATEURS,
 CAPACITE_DES_ELECTEURS,
-N_COLUMN
-//TOGGLE_COLUMN,
+N_COLUMN,
+TOGGLE_COLUMN
 };
 
 
@@ -133,7 +133,7 @@ pListStore=gtk_tree_view_get_model(pListView);
 
 
 
-/*
+
 void toggled_func(GtkCellRendererToggle *cell_renderer, gchar *path, gpointer user_data)
 {
  
@@ -156,7 +156,6 @@ void toggled_func(GtkCellRendererToggle *cell_renderer, gchar *path, gpointer us
  
 }
 
-*/
 
 
 if (pListStore== NULL) {
@@ -194,10 +193,11 @@ pColumn = gtk_tree_view_column_new_with_attributes("capacite_des_electeurs",pCel
 gtk_tree_view_append_column(GTK_TREE_VIEW(pListView), pColumn);
 
 
-/*pCellRenderer = gtk_cell_renderer_toggle_new();
-pColumn=gtk_tree_view_column_new_with_attributes("select",pCellRenderer,"active", TOGGLE_COLUMN,NULL);
+pCellRenderer = gtk_cell_renderer_toggle_new();
+
+pColumn=gtk_tree_view_column_new_with_attributes("select",pCellRenderer,"active",TOGGLE_COLUMN,NULL);
 g_signal_connect(G_OBJECT(pCellRenderer), "toggled", (GCallback)toggled_func, pListStore);
-gtk_tree_view_append_column(GTK_TREE_VIEW(pListView), pColumn);	*/
+gtk_tree_view_append_column(GTK_TREE_VIEW(pListView), pColumn);	
 
 
 

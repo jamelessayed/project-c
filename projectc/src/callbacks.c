@@ -617,7 +617,7 @@ gtk_widget_show(yahAzizListeElections) ;
 
 
 void
-on_button_return_ajout_bv_JE_clicked   (GtkButton       *button,
+on_button_return_ajout_bv_JE_clicked   (GtkWidget      *button,
                                         gpointer         user_data)
 {
 GtkWidget *fenetre_ajout;
@@ -635,7 +635,7 @@ gtk_widget_show(fenetre_afficher) ;
 
 
 void
-on_button_ajout_bv_JE_clicked          (GtkButton       *objet,
+on_button_ajout_bv_JE_clicked          (GtkWidget       *objet,
                                         gpointer         user_data)
 {
 int a;
@@ -668,7 +668,18 @@ b.capacite_des_electeurs= (int)gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(
 
 
 a=ajouter(b,"/home/jamel/Downloads/projectc/src/bureau.txt");
-tree_bv=lookup_widget(GTK_WIDGET(objet),"treeview_bv_JE");
+
+
+GtkWidget *fenetre_ajout;
+GtkWidget *fenetre_afficher;
+
+
+fenetre_ajout=lookup_widget(GTK_WIDGET(objet),"Jamel1");
+gtk_widget_destroy(fenetre_ajout);
+fenetre_afficher=lookup_widget(GTK_WIDGET(objet),"jamel2");
+fenetre_afficher=create_jamel2();
+gtk_widget_show(fenetre_afficher) ;
+tree_bv=lookup_widget(fenetre_afficher,"treebv");
 afficher_bureau(tree_bv);
 
 
@@ -702,7 +713,7 @@ on_button_modif_affic_bv_JE_clicked    (GtkButton       *button,
 
 
 void
-on_button_ajout_affic_bv_JE_clicked    (GtkButton       *button,
+on_button_ajout_affic_bv_JE_clicked    (GtkWidget       *button,
                                         gpointer         user_data)
 {
 GtkWidget *fenetre_ajout;
@@ -754,69 +765,42 @@ on_button_return_modif_bv_JE_clicked   (GtkButton       *button,
 
 
 void
-on_treeview_bv_JE_row_activated        (GtkTreeView     *treeview,
-                                        GtkTreePath     *path,
-                                        GtkTreeViewColumn *column,
-                                        gpointer         user_data)
+on_treeview_bv_JE_row_activated        (GtkTreeView     *treeview,GtkTreePath     *path,GtkTreeViewColumn *column,gpointer         user_data)
 {
-
-
-/*
-  	gchar *region;
+ 
+  	gchar *ecole;
 	gchar *municipalite;
-        
-	gchar *id_election;
-	gchar *nbh_election;
+	gchar *id_bureau;
+	gchar *id_agent;
+	gchar *num_salle;
+	gchar *capacite_des_observateurs;
+	gchar *capacite_des_electeurs;
+	
+	bureau b;
+	int x;
 
-	GtkWidget *gestion_compte;
-	GtkWidget *listeview;
-        GtkWidget *supprimer_compte__;
         GtkTreeIter iter;
-FILE *f;
-char var[50],var1[50],var2[50];
-int jd, md, ad,id,nbh;
 
 
-listeview = lookup_widget(objet_graphique,"treeview1");
-
-GtkTreeModel *model = gtk_tree_view_get_model (GTK_TREE_VIEW(lookup_widget(objet_graphique,"treeview1")));
+GtkTreeModel *model = gtk_tree_view_get_model (treeview);
  
 
    if (gtk_tree_model_get_iter(model, &iter, path)) {
-      gtk_tree_model_get (GTK_LIST_STORE(model), &iter, 0, &id_election, 1, &nbh_election, 2, &region, 3, &municipalite, -1);
- f = fopen("src/gestion_election.txt","r");
- while(fscanf(f,"%d %d %s %s %d %d %d\n",&id,&nbh,var1,var2,&jd,&md,&ad) != EOF)
-    {
-      if (strcmp(id,id_election)==0)
-     
-break;
+      gtk_tree_model_get (GTK_LIST_STORE(model), &iter, 0, &id_bureau, 1, &municipalite, 2, &ecole, 3, &id_agent,4,&num_salle,5,&capacite_des_observateurs,6,capacite_des_electeurs, -1);
+	b.id_bureau=atoi(id_bureau);
+	strcpy(b.municipalite,municipalite);
+	strcpy(b.ecole,ecole);
+	b.id_agent=atoi(id_agent);
+	b.num_salle=atoi(num_salle);
+	b.capacite_des_observateurs=atoi(capacite_des_observateurs);
+	b.capacite_des_electeurs=atoi(capacite_des_electeurs);
+ 	x=supprimer((int *)id_bureau,"/home/jamel/Downloads/projectc/src/bureau.txt");
 	
- 
+        afficher_bureau(treeview);
     }                                                      
- } fclose(f);
-gestion_compte = lookup_widget(objet_graphique,"yahAzizListeElections");
-
-GtkWidget *input1 = lookup_widget(gestion_compte,"entry6");
-GtkWidget *input2=lookup_widget(gestion_compte,"entry7");
-
-GtkWidget *input3=lookup_widget(gestion_compte,"combobox_yah_Aziz_region");
-
-GtkWidget *input4=lookup_widget(gestion_compte,"combobox_yah_Aziz_municipalite");
-GtkWidget *input5=lookup_widget(gestion_compte,"spinbutton_yahaziz_jour");
-GtkWidget *input6=lookup_widget(gestion_compte,"spinbutton_yahaziz_mois");
-
-GtkWidget *input7=lookup_widget(gestion_compte,"spinbutton_yahaziz_annee");
-
-gtk_entry_set_text(GTK_ENTRY(input1),id_election);
-gtk_entry_set_text(GTK_ENTRY(input2),nbh_election);
-gtk_entry_set_text(GTK_ENTRY(input3),region);
-gtk_entry_set_text(GTK_ENTRY(input4),municipalite);
+ 
 
 
-gtk_spin_button_set_value(input5,jd);
-gtk_spin_button_set_value(input6,md);
-gtk_spin_button_set_value(input7,ad);
-afficher_election(listeview);
-*/
+
 }
 

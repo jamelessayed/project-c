@@ -233,11 +233,11 @@ on_closebutton_succes_clicked          (GtkWidget       *objet,
                                         gpointer         user_data);
 
 void
-on_button_return_ajout_bv_JE_clicked   (GtkButton       *button,
+on_button_return_ajout_bv_JE_clicked   (GtkWidget       *button,
                                         gpointer         user_data);
 
 void
-on_button_ajout_bv_JE_clicked          (GtkButton       *objet,
+on_button_ajout_bv_JE_clicked          (GtkWidget       *objet,
                                         gpointer         user_data);
 
 void
@@ -253,7 +253,7 @@ on_button_modif_affic_bv_JE_clicked    (GtkButton       *button,
                                         gpointer         user_data);
 
 void
-on_button_ajout_affic_bv_JE_clicked    (GtkButton       *button,
+on_button_ajout_affic_bv_JE_clicked    (GtkWidget       *button,
                                         gpointer         user_data);
 
 void
