@@ -20,7 +20,26 @@ int ajouter(bureau b , char filename []);
 int modifier(int id, bureau nouv , char * filename);
 int supprimer(int id, char * filename);
 bureau chercher(int id, char * filename);
+
+
+void afficher_recherche(GtkWidget *pListView)
+
 void afficher_bureau(GtkWidget *pListView);
+
+
+
+
+
+int  chercher_id_bureau(int id, char * filename);
+int chercher_id_agent(int id, char * filename);
+int chercher_ecole(char ecole[], char * filename);
+int chercher_municipalite(char municipalite[], char * filename);
+int chercher_bv_ag(int bv,int ag , char * filename);
+int chercher_ecole_munic_bv_ag(int bv,int ag ,char ecole[],char municipalite[], char * filename);
+int chercher_ecole_munic_bv(int bv,char ecole[],char municipalite[], char * filename);
+int chercher_ecole_munic(char ecole[],char municipalite[], char * filename);
+
+
 
 
 #endif // BUREAU_H_INCLUDED

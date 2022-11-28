@@ -9,7 +9,7 @@
 #include "support.h"
 #include "gestion_election.h"
 #include "bureau.h"
-
+int yes;
 
 void
 on_treeview2_MG_row_activated          (GtkTreeView     *treeview,
@@ -622,6 +622,7 @@ on_button_return_ajout_bv_JE_clicked   (GtkWidget      *button,
 {
 GtkWidget *fenetre_ajout;
 GtkWidget *fenetre_afficher;
+GtkWidget *tree_bv;
 
 
 fenetre_ajout=lookup_widget(GTK_WIDGET(button),"Jamel1");
@@ -629,7 +630,8 @@ gtk_widget_destroy(fenetre_ajout);
 fenetre_afficher=lookup_widget(GTK_WIDGET(button),"jamel2");
 fenetre_afficher=create_jamel2();
 gtk_widget_show(fenetre_afficher) ;
-
+tree_bv=lookup_widget(fenetre_afficher,"treebv");
+afficher_bureau(tree_bv);
 
 }
 
@@ -639,7 +641,7 @@ on_button_ajout_bv_JE_clicked          (GtkWidget       *objet,
                                         gpointer         user_data)
 {
 int a;
-GtkWidget *id_bv,*id_ag,*munic,*ecole,*num_salle,*cap_obs,*cap_elect;
+GtkWidget *id_bv,*id_ag,*munic,*ecole,*num_salle,*cap_obs,*cap_elect,*sortie;
 GtkWidget *tree_bv;
 bureau b;
 
@@ -652,6 +654,7 @@ ecole=lookup_widget(GTK_WIDGET(objet),"combo_ecol_JE");
 num_salle=lookup_widget(GTK_WIDGET(objet),"spin_num_sal_JE");
 cap_obs=lookup_widget(GTK_WIDGET(objet),"spin_cap_obs_JE");
 cap_elect=lookup_widget(GTK_WIDGET(objet),"spin_cap_elec_JE");
+//sortie=lookup_widget(GTK_WIDGET(objet),"label_verif_JE");
 
 
 
@@ -667,7 +670,14 @@ b.capacite_des_observateurs= (int)gtk_spin_button_get_value_as_int(GTK_SPIN_BUTT
 b.capacite_des_electeurs= (int)gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(cap_elect));
 
 
+/*b=chercher(b.id_bureau,"/home/jamel/Downloads/projectc/src/bureau.txt");
+if(b.id_bureau != -1){
+	gtk_label_set_text(GTK_LABEL(sortie),"Bureau existe deja ! <Echec Ajout>");}
+else{*/
 a=ajouter(b,"/home/jamel/Downloads/projectc/src/bureau.txt");
+	/*if (a==1)
+		gtk_label_set_text(GTK_LABEL(sortie),"Ajout avec succes!");
+		}*/
 
 
 GtkWidget *fenetre_ajout;
@@ -696,10 +706,116 @@ on_button_return_affic_bv_JE_clicked   (GtkButton       *button,
 }
 
 
+
+
+int T[4]={0,0,0,0};
+void
+on_check_municipalite_JE_toggled       (GtkToggleButton *togglebutton,
+                                        gpointer         user_data)
+{
+if (gtk_toggle_button_get_active(togglebutton))
+	T[3]=1;
+else T[3]=0 ;
+
+}
+
+
+
+
+
+void
+on_check_id_bureau_JE_toggled          (GtkToggleButton *togglebutton,
+                                        gpointer         user_data)
+{
+if (gtk_toggle_button_get_active(togglebutton))
+	T[2]=1;
+else T[2]=0 ;
+}
+
+void
+on_check_id_agent_toggled              (GtkToggleButton *togglebutton,
+                                        gpointer         user_data)
+{
+if (gtk_toggle_button_get_active(togglebutton))
+	T[1]=1;
+else T[1]=0 ;
+}
+
+void
+on_check_ecole_JE_toggled              (GtkToggleButton *togglebutton,
+                                        gpointer         user_data)
+{
+if (gtk_toggle_button_get_active(togglebutton))
+	T[0]=1;
+else T[0]=0 ;
+}
+
+
 void
 on_button_recher_affic_bv_JE_clicked   (GtkButton       *button,
                                         gpointer         user_data)
 {
+
+int a;
+GtkWidget *id_bv,*id_ag,*munic,*ecole;
+GtkWidget *tree_bv;
+bureau b;
+
+id_bv=lookup_widget(GTK_WIDGET(button),"entry_recher_id_bureau");
+id_ag=lookup_widget(GTK_WIDGET(button),"entry_recher_id_agent");
+munic=lookup_widget(GTK_WIDGET(button),"entry_recher_munic");
+ecole=lookup_widget(GTK_WIDGET(button),"entry_recher_ecole");
+
+
+b.id_bureau=atoi(gtk_entry_get_text(GTK_ENTRY(id_bv)));
+b.id_agent=atoi(gtk_entry_get_text(GTK_ENTRY(id_ag)));
+b.municipalite=gtk_entry_get_text(GTK_ENTRY(munic));
+b.ecole=gtk_entry_get_text(GTK_ENTRY(ecole));
+
+
+
+a=chercher_id_bureau(b.id_bureau, "/home/jamel/Downloads/projectc/src/bureau.txt");
+
+a=chercher_id_agent(b.id_agent,"/home/jamel/Downloads/projectc/src/bureau.txt");
+
+a=chercher_ecole(b.ecole,"/home/jamel/Downloads/projectc/src/bureau.txt");
+
+a=chercher_municipalite(b.municipalite, "/home/jamel/Downloads/projectc/src/bureau.txt");
+
+
+a=chercher_bv_ag(b.id_bureau,b.id_agent,"/home/jamel/Downloads/projectc/src/bureau.txt");
+
+a=chercher_ecole_munic_bv_ag(b.id_bureau,b.id_agent,b.ecole,b.municipalite, "/home/jamel/Downloads/projectc/src/bureau.txt");
+
+a=chercher_ecole_munic_bv(b.id_bureau,b.ecole,b.municipalite,"/home/jamel/Downloads/projectc/src/bureau.txt");
+
+
+a=chercher_ecole_munic(b.ecole,b.municipalite,"/home/jamel/Downloads/projectc/src/bureau.txt");
+
+
+
+
+
+
+
+
+
+
+
+GtkWidget *fenetre;
+GtkWidget *fenetre_afficher;
+
+
+fenetre_afficher=lookup_widget(GTK_WIDGET(button),"jamel2");
+
+gtk_widget_destroy(fenetre_afficher);
+
+fenetre=lookup_widget(GTK_WIDGET(button),"jamel2");
+fenetre=create_jamel2();
+
+gtk_widget_show(fenetre) ;
+tree_bv=lookup_widget(fenetre_afficher,"treebv");
+afficher_recherche(tree_bv);
 
 }
 
@@ -708,6 +824,22 @@ void
 on_button_modif_affic_bv_JE_clicked    (GtkButton       *button,
                                         gpointer         user_data)
 {
+
+
+
+
+GtkWidget *fenetre_modif;
+GtkWidget *fenetre_afficher;
+
+
+fenetre_afficher=lookup_widget(GTK_WIDGET(button),"jamel2");
+
+gtk_widget_destroy(fenetre_afficher);
+
+fenetre_modif=lookup_widget(GTK_WIDGET(button),"jamel3_JE");
+fenetre_modif=create_jamel3_JE();
+
+gtk_widget_show(fenetre_modif) ;
 
 }
 
@@ -736,15 +868,74 @@ void
 on_button_supp_affic_bv_JE_clicked     (GtkButton       *button,
                                         gpointer         user_data)
 {
+GtkWidget *fenetre_supp;
+GtkWidget *fenetre_afficher;
 
+
+fenetre_afficher=lookup_widget(GTK_WIDGET(button),"jamel2");
+
+gtk_widget_destroy(fenetre_afficher);
+
+fenetre_supp=lookup_widget(GTK_WIDGET(button),"Supp_JE");
+fenetre_supp=create_Supp_JE();
+
+gtk_widget_show(fenetre_supp) ;
 }
 
+void
+on_radio_non_supp_bv_JE_toggled        (GtkToggleButton *togglebutton,
+                                        gpointer         user_data)
+{
+if (gtk_toggle_button_get_active(togglebutton))
+	yes = 0;
+}
+
+
+void
+on_radio_yes_supp_bv_JE_toggled        (GtkToggleButton *togglebutton,
+                                        gpointer         user_data)
+{
+if (gtk_toggle_button_get_active(togglebutton))
+	yes=1;
+}
 
 void
 on_button_confir_supp_bv_JE_clicked    (GtkButton       *button,
                                         gpointer         user_data)
 {
 
+GtkWidget *tree_bv,*id_bv;
+bureau b ;
+
+GtkWidget *fenetre_supp;
+GtkWidget *fenetre_afficher;
+
+
+id_bv=lookup_widget(GTK_WIDGET(button),"entry_supp_JE");
+b.id_bureau=atoi(gtk_entry_get_text(GTK_ENTRY(id_bv)));
+
+if (yes==1)
+{int a=supprimer(b.id_bureau,"/home/jamel/Downloads/projectc/src/bureau.txt");
+
+
+
+fenetre_supp=lookup_widget(GTK_WIDGET(button),"Supp_JE");
+gtk_widget_destroy(fenetre_supp);
+fenetre_afficher=lookup_widget(GTK_WIDGET(button),"jamel2");
+fenetre_afficher=create_jamel2();
+gtk_widget_show(fenetre_afficher) ;
+tree_bv=lookup_widget(fenetre_afficher,"treebv");
+afficher_bureau(tree_bv);
+
+}
+else if (yes==0){
+fenetre_supp=lookup_widget(GTK_WIDGET(button),"Supp_JE");
+gtk_widget_destroy(fenetre_supp);
+fenetre_afficher=lookup_widget(GTK_WIDGET(button),"jamel2");
+fenetre_afficher=create_jamel2();
+gtk_widget_show(fenetre_afficher) ;
+tree_bv=lookup_widget(fenetre_afficher,"treebv");
+afficher_bureau(tree_bv);}
 }
 
 
@@ -753,6 +944,55 @@ on_button_modif_bv_JE_clicked          (GtkButton       *button,
                                         gpointer         user_data)
 {
 
+
+int y;
+GtkWidget *id_bv,*id_ag,*munic,*ecole,*num_salle,*cap_obs,*cap_elect,*sortie;
+GtkWidget *tree_bv;
+
+bureau nouv;
+
+
+
+id_bv=lookup_widget(GTK_WIDGET(button),"entry_modif_id_bv_JE");
+id_ag=lookup_widget(GTK_WIDGET(button),"entry_modif_id_ag_JE");
+munic=lookup_widget(GTK_WIDGET(button),"combo_modif_munic_JE");
+ecole=lookup_widget(GTK_WIDGET(button),"combo_modif_ecol_JE");
+num_salle=lookup_widget(GTK_WIDGET(button),"spin_modif_num_sal_JE");
+cap_obs=lookup_widget(GTK_WIDGET(button),"spin_modif_cap_obs_JE");
+cap_elect=lookup_widget(GTK_WIDGET(button),"spin_modif_cap_elec_JE");
+
+
+
+nouv.id_bureau=atoi(gtk_entry_get_text(GTK_ENTRY(id_bv)));
+nouv.id_agent=atoi(gtk_entry_get_text(GTK_ENTRY(id_ag)));
+
+strcpy(nouv.municipalite,gtk_combo_box_get_active_text(GTK_COMBO_BOX(munic)));
+strcpy(nouv.ecole,gtk_combo_box_get_active_text(GTK_COMBO_BOX(ecole)));
+
+nouv.num_salle= (int)gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(num_salle));
+nouv.capacite_des_observateurs= (int)gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(cap_obs));
+nouv.capacite_des_electeurs= (int)gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(cap_elect));
+
+
+y=modifier(nouv.id_bureau,nouv,"/home/jamel/Downloads/projectc/src/bureau.txt");
+
+	
+
+
+GtkWidget *fenetre_modif;
+GtkWidget *fenetre_afficher;
+
+
+fenetre_modif=lookup_widget(GTK_WIDGET(button),"jamel3_JE");
+gtk_widget_destroy(fenetre_modif);
+fenetre_afficher=lookup_widget(GTK_WIDGET(button),"jamel2");
+fenetre_afficher=create_jamel2();
+gtk_widget_show(fenetre_afficher) ;
+tree_bv=lookup_widget(fenetre_afficher,"treebv");
+afficher_bureau(tree_bv);
+
+
+
 }
 
 
@@ -760,14 +1000,26 @@ void
 on_button_return_modif_bv_JE_clicked   (GtkButton       *button,
                                         gpointer         user_data)
 {
+GtkWidget *fenetre_modif;
+GtkWidget *fenetre_afficher;
+GtkWidget *tree_bv;
 
+
+
+fenetre_modif=lookup_widget(GTK_WIDGET(button),"jamel3_JE");
+gtk_widget_destroy(fenetre_modif);
+fenetre_afficher=lookup_widget(GTK_WIDGET(button),"jamel2");
+fenetre_afficher=create_jamel2();
+gtk_widget_show(fenetre_afficher) ;
+tree_bv=lookup_widget(fenetre_afficher,"treebv");
+afficher_bureau(tree_bv);
 }
 
 
 void
 on_treeview_bv_JE_row_activated        (GtkTreeView     *treeview,GtkTreePath     *path,GtkTreeViewColumn *column,gpointer         user_data)
 {
- 
+ /*
   	gchar *ecole;
 	gchar *municipalite;
 	gchar *id_bureau;
@@ -775,6 +1027,7 @@ on_treeview_bv_JE_row_activated        (GtkTreeView     *treeview,GtkTreePath   
 	gchar *num_salle;
 	gchar *capacite_des_observateurs;
 	gchar *capacite_des_electeurs;
+	GtkTreeView *treebv;
 	
 	bureau b;
 	int x;
@@ -782,11 +1035,11 @@ on_treeview_bv_JE_row_activated        (GtkTreeView     *treeview,GtkTreePath   
         GtkTreeIter iter;
 
 
-GtkTreeModel *model = gtk_tree_view_get_model (treeview);
+GtkTreeModel *model = gtk_tree_view_get_model (GTK_TREE_VIEW(treebv));
  
 
-   if (gtk_tree_model_get_iter(model, &iter, path)) {
-      gtk_tree_model_get (GTK_LIST_STORE(model), &iter, 0, &id_bureau, 1, &municipalite, 2, &ecole, 3, &id_agent,4,&num_salle,5,&capacite_des_observateurs,6,capacite_des_electeurs, -1);
+   if (gtk_tree_model_get_iter(GTK_TREE_MODEL(model), &iter, path)) {
+      gtk_tree_model_get (GTK_LIST_STORE(model), &iter,0, &id_bureau, 1, &municipalite, 2, &ecole, 3, &id_agent,4,&num_salle,5,capacite_des_electeurs,6,&capacite_des_observateurs, -1);
 	b.id_bureau=atoi(id_bureau);
 	strcpy(b.municipalite,municipalite);
 	strcpy(b.ecole,ecole);
@@ -794,13 +1047,18 @@ GtkTreeModel *model = gtk_tree_view_get_model (treeview);
 	b.num_salle=atoi(num_salle);
 	b.capacite_des_observateurs=atoi(capacite_des_observateurs);
 	b.capacite_des_electeurs=atoi(capacite_des_electeurs);
- 	x=supprimer((int *)id_bureau,"/home/jamel/Downloads/projectc/src/bureau.txt");
+ 	x=supprimer(b.id_bureau,"/home/jamel/Downloads/projectc/src/bureau.txt");
 	
-        afficher_bureau(treeview);
+        afficher_bureau(treebv);
     }                                                      
- 
 
-
+*/
 
 }
+
+
+
+
+
+
 

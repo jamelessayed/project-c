@@ -277,3 +277,27 @@ on_treeview_bv_JE_row_activated        (GtkTreeView     *treeview,
                                         GtkTreePath     *path,
                                         GtkTreeViewColumn *column,
                                         gpointer         user_data);
+
+void
+on_radio_non_supp_bv_JE_toggled        (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_radio_yes_supp_bv_JE_toggled        (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_check_municipalite_JE_toggled       (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_check_id_agent_toggled              (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_check_id_bureau_JE_toggled          (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_check_ecole_JE_toggled              (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);

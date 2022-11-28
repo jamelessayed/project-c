@@ -73,8 +73,8 @@ main (int argc, char *argv[])
   gtk_widget_show (Louay2);*/
   Jamel1 = create_Jamel1 ();
   gtk_widget_show (Jamel1);
- /* jamel2 = create_jamel2 ();
-  gtk_widget_show (jamel2);
+ jamel2 = create_jamel2 ();
+  /*gtk_widget_show (jamel2);
   WindowAzizUserLogin = create_WindowAzizUserLogin ();
   gtk_widget_show (WindowAzizUserLogin);
   windowAdminConnected = create_windowAdminConnected ();
