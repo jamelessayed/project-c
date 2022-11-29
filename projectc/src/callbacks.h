@@ -301,3 +301,7 @@ on_check_id_bureau_JE_toggled          (GtkToggleButton *togglebutton,
 void
 on_check_ecole_JE_toggled              (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
+
+void
+on_actualiser_JE_clicked               (GtkButton       *button,
+                                        gpointer         user_data);

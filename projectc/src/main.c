@@ -23,7 +23,7 @@ main (int argc, char *argv[])
   GtkWidget *maissa_4;
   GtkWidget *Louay2;
   GtkWidget *Jamel1;
-  GtkWidget *jamel2;
+  GtkWidget *jamel_2;
   GtkWidget *WindowAzizUserLogin;
   GtkWidget *windowAdminConnected;
   GtkWidget *windowGestionnaireUtilisateurs;
@@ -73,8 +73,8 @@ main (int argc, char *argv[])
   gtk_widget_show (Louay2);*/
   Jamel1 = create_Jamel1 ();
   gtk_widget_show (Jamel1);
- jamel2 = create_jamel2 ();
-  /*gtk_widget_show (jamel2);
+  jamel_2 = create_jamel_2 ();
+  /*gtk_widget_show (jamel_2);
   WindowAzizUserLogin = create_WindowAzizUserLogin ();
   gtk_widget_show (WindowAzizUserLogin);
   windowAdminConnected = create_windowAdminConnected ();
@@ -98,12 +98,12 @@ main (int argc, char *argv[])
   Louay1 = create_Louay1 ();
   gtk_widget_show (Louay1);
   mahmoud_interface3_MG = create_mahmoud_interface3_MG ();
-  gtk_widget_show (mahmoud_interface3_MG);
+  gtk_widget_show (mahmoud_interface3_MG);*/
   jamel3_JE = create_jamel3_JE ();
-  gtk_widget_show (jamel3_JE);
+  //gtk_widget_show (jamel3_JE);
   Supp_JE = create_Supp_JE ();
-  gtk_widget_show (Supp_JE);
-  dialog3 = create_dialog3 ();
+  //gtk_widget_show (Supp_JE);
+ /* dialog3 = create_dialog3 ();
   gtk_widget_show (dialog3);
   dialog4 = create_dialog4 ();
   gtk_widget_show (dialog4);*/

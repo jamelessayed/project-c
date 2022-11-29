@@ -1331,8 +1331,8 @@ create_Jamel1 (void)
   GtkWidget *hbox26;
   GtkWidget *image37;
   GtkWidget *label69_JE;
-  GtkWidget *combo_ecol_JE;
   GtkWidget *combo_munic_JE;
+  GtkWidget *combo_ecol_JE;
 
   Jamel1 = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (Jamel1), _("Ajout Bureau"));
@@ -1436,22 +1436,26 @@ create_Jamel1 (void)
   gtk_widget_show (label69_JE);
   gtk_box_pack_start (GTK_BOX (hbox26), label69_JE, FALSE, FALSE, 0);
 
-  combo_ecol_JE = gtk_combo_box_new_text ();
-  gtk_widget_show (combo_ecol_JE);
-  gtk_fixed_put (GTK_FIXED (fixed10_JE), combo_ecol_JE, 384, 240);
-  gtk_widget_set_size_request (combo_ecol_JE, 177, 31);
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combo_ecol_JE), _("1 "));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combo_ecol_JE), _("2"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combo_ecol_JE), _("3"));
-
   combo_munic_JE = gtk_combo_box_new_text ();
   gtk_widget_show (combo_munic_JE);
   gtk_fixed_put (GTK_FIXED (fixed10_JE), combo_munic_JE, 384, 184);
   gtk_widget_set_size_request (combo_munic_JE, 177, 31);
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combo_munic_JE), _("1"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combo_munic_JE), _("2"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combo_munic_JE), _("3"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combo_munic_JE), _("4"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combo_munic_JE), _("Tunis"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combo_munic_JE), _("Tozeur"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combo_munic_JE), _("Ben_Arous"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combo_munic_JE), _("Ariana"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combo_munic_JE), _("Kef"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combo_munic_JE), _("Sousse"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combo_munic_JE), _("monastir"));
+
+  combo_ecol_JE = gtk_combo_box_new_text ();
+  gtk_widget_show (combo_ecol_JE);
+  gtk_fixed_put (GTK_FIXED (fixed10_JE), combo_ecol_JE, 384, 240);
+  gtk_widget_set_size_request (combo_ecol_JE, 177, 31);
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combo_ecol_JE), _("Ibn_chabat"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combo_ecol_JE), _("Mensah_9"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combo_ecol_JE), _("Ibn_khouldoun"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combo_ecol_JE), _("Hbib_bourgiba"));
 
   g_signal_connect ((gpointer) button_return_ajout_bv_JE, "clicked",
                     G_CALLBACK (on_button_return_ajout_bv_JE_clicked),
@@ -1482,16 +1486,16 @@ create_Jamel1 (void)
   GLADE_HOOKUP_OBJECT (Jamel1, hbox26, "hbox26");
   GLADE_HOOKUP_OBJECT (Jamel1, image37, "image37");
   GLADE_HOOKUP_OBJECT (Jamel1, label69_JE, "label69_JE");
-  GLADE_HOOKUP_OBJECT (Jamel1, combo_ecol_JE, "combo_ecol_JE");
   GLADE_HOOKUP_OBJECT (Jamel1, combo_munic_JE, "combo_munic_JE");
+  GLADE_HOOKUP_OBJECT (Jamel1, combo_ecol_JE, "combo_ecol_JE");
 
   return Jamel1;
 }
 
 GtkWidget*
-create_jamel2 (void)
+create_jamel_2 (void)
 {
-  GtkWidget *jamel2;
+  GtkWidget *jamel_2;
   GtkWidget *fixed11_JE;
   GtkWidget *entry_recher_ecole;
   GtkWidget *treebv;
@@ -1525,13 +1529,15 @@ create_jamel2 (void)
   GtkWidget *check_ecole_JE;
   GtkWidget *label_verif_JE;
   GtkWidget *label104_JE;
+  GtkWidget *actualiser_JE;
+  GtkWidget *image65;
 
-  jamel2 = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_window_set_title (GTK_WINDOW (jamel2), _("affichage bureau"));
+  jamel_2 = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  gtk_window_set_title (GTK_WINDOW (jamel_2), _("affichage bureau"));
 
   fixed11_JE = gtk_fixed_new ();
   gtk_widget_show (fixed11_JE);
-  gtk_container_add (GTK_CONTAINER (jamel2), fixed11_JE);
+  gtk_container_add (GTK_CONTAINER (jamel_2), fixed11_JE);
 
   entry_recher_ecole = gtk_entry_new ();
   gtk_widget_show (entry_recher_ecole);
@@ -1686,6 +1692,15 @@ create_jamel2 (void)
   gtk_fixed_put (GTK_FIXED (fixed11_JE), label104_JE, 488, 88);
   gtk_widget_set_size_request (label104_JE, 128, 32);
 
+  actualiser_JE = gtk_button_new ();
+  gtk_widget_show (actualiser_JE);
+  gtk_fixed_put (GTK_FIXED (fixed11_JE), actualiser_JE, 1200, 112);
+  gtk_widget_set_size_request (actualiser_JE, 40, 29);
+
+  image65 = gtk_image_new_from_stock ("gtk-refresh", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image65);
+  gtk_container_add (GTK_CONTAINER (actualiser_JE), image65);
+
   g_signal_connect ((gpointer) treebv, "row_activated",
                     G_CALLBACK (on_treeview_bv_JE_row_activated),
                     NULL);
@@ -1716,44 +1731,49 @@ create_jamel2 (void)
   g_signal_connect ((gpointer) check_ecole_JE, "toggled",
                     G_CALLBACK (on_check_ecole_JE_toggled),
                     NULL);
+  g_signal_connect ((gpointer) actualiser_JE, "clicked",
+                    G_CALLBACK (on_actualiser_JE_clicked),
+                    NULL);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
-  GLADE_HOOKUP_OBJECT_NO_REF (jamel2, jamel2, "jamel2");
-  GLADE_HOOKUP_OBJECT (jamel2, fixed11_JE, "fixed11_JE");
-  GLADE_HOOKUP_OBJECT (jamel2, entry_recher_ecole, "entry_recher_ecole");
-  GLADE_HOOKUP_OBJECT (jamel2, treebv, "treebv");
-  GLADE_HOOKUP_OBJECT (jamel2, button_supp_affic_bv_JE, "button_supp_affic_bv_JE");
-  GLADE_HOOKUP_OBJECT (jamel2, alignment25, "alignment25");
-  GLADE_HOOKUP_OBJECT (jamel2, hbox25, "hbox25");
-  GLADE_HOOKUP_OBJECT (jamel2, image36_JE, "image36_JE");
-  GLADE_HOOKUP_OBJECT (jamel2, label68JE, "label68JE");
-  GLADE_HOOKUP_OBJECT (jamel2, button_modif_affic_bv_JE, "button_modif_affic_bv_JE");
-  GLADE_HOOKUP_OBJECT (jamel2, alignment24, "alignment24");
-  GLADE_HOOKUP_OBJECT (jamel2, hbox24, "hbox24");
-  GLADE_HOOKUP_OBJECT (jamel2, image35_JE, "image35_JE");
-  GLADE_HOOKUP_OBJECT (jamel2, label67_JE, "label67_JE");
-  GLADE_HOOKUP_OBJECT (jamel2, button_ajout_affic_bv_JE, "button_ajout_affic_bv_JE");
-  GLADE_HOOKUP_OBJECT (jamel2, alignment43, "alignment43");
-  GLADE_HOOKUP_OBJECT (jamel2, hbox43, "hbox43");
-  GLADE_HOOKUP_OBJECT (jamel2, image64_JE, "image64_JE");
-  GLADE_HOOKUP_OBJECT (jamel2, label103, "label103");
-  GLADE_HOOKUP_OBJECT (jamel2, label29_JE, "label29_JE");
-  GLADE_HOOKUP_OBJECT (jamel2, button_return_affic_bv_JE, "button_return_affic_bv_JE");
-  GLADE_HOOKUP_OBJECT (jamel2, image39_JE, "image39_JE");
-  GLADE_HOOKUP_OBJECT (jamel2, label1_JE, "label1_JE");
-  GLADE_HOOKUP_OBJECT (jamel2, button_recher_affic_bv_JE, "button_recher_affic_bv_JE");
-  GLADE_HOOKUP_OBJECT (jamel2, image42, "image42");
-  GLADE_HOOKUP_OBJECT (jamel2, entry_recher_id_agent, "entry_recher_id_agent");
-  GLADE_HOOKUP_OBJECT (jamel2, entry_recher_munic, "entry_recher_munic");
-  GLADE_HOOKUP_OBJECT (jamel2, entry_recher_id_bureau, "entry_recher_id_bureau");
-  GLADE_HOOKUP_OBJECT (jamel2, check_id_agent, "check_id_agent");
-  GLADE_HOOKUP_OBJECT (jamel2, check_municipalite_JE, "check_municipalite_JE");
-  GLADE_HOOKUP_OBJECT (jamel2, check_id_bureau_JE, "check_id_bureau_JE");
-  GLADE_HOOKUP_OBJECT (jamel2, check_ecole_JE, "check_ecole_JE");
-  GLADE_HOOKUP_OBJECT (jamel2, label_verif_JE, "label_verif_JE");
-  GLADE_HOOKUP_OBJECT (jamel2, label104_JE, "label104_JE");
+  GLADE_HOOKUP_OBJECT_NO_REF (jamel_2, jamel_2, "jamel_2");
+  GLADE_HOOKUP_OBJECT (jamel_2, fixed11_JE, "fixed11_JE");
+  GLADE_HOOKUP_OBJECT (jamel_2, entry_recher_ecole, "entry_recher_ecole");
+  GLADE_HOOKUP_OBJECT (jamel_2, treebv, "treebv");
+  GLADE_HOOKUP_OBJECT (jamel_2, button_supp_affic_bv_JE, "button_supp_affic_bv_JE");
+  GLADE_HOOKUP_OBJECT (jamel_2, alignment25, "alignment25");
+  GLADE_HOOKUP_OBJECT (jamel_2, hbox25, "hbox25");
+  GLADE_HOOKUP_OBJECT (jamel_2, image36_JE, "image36_JE");
+  GLADE_HOOKUP_OBJECT (jamel_2, label68JE, "label68JE");
+  GLADE_HOOKUP_OBJECT (jamel_2, button_modif_affic_bv_JE, "button_modif_affic_bv_JE");
+  GLADE_HOOKUP_OBJECT (jamel_2, alignment24, "alignment24");
+  GLADE_HOOKUP_OBJECT (jamel_2, hbox24, "hbox24");
+  GLADE_HOOKUP_OBJECT (jamel_2, image35_JE, "image35_JE");
+  GLADE_HOOKUP_OBJECT (jamel_2, label67_JE, "label67_JE");
+  GLADE_HOOKUP_OBJECT (jamel_2, button_ajout_affic_bv_JE, "button_ajout_affic_bv_JE");
+  GLADE_HOOKUP_OBJECT (jamel_2, alignment43, "alignment43");
+  GLADE_HOOKUP_OBJECT (jamel_2, hbox43, "hbox43");
+  GLADE_HOOKUP_OBJECT (jamel_2, image64_JE, "image64_JE");
+  GLADE_HOOKUP_OBJECT (jamel_2, label103, "label103");
+  GLADE_HOOKUP_OBJECT (jamel_2, label29_JE, "label29_JE");
+  GLADE_HOOKUP_OBJECT (jamel_2, button_return_affic_bv_JE, "button_return_affic_bv_JE");
+  GLADE_HOOKUP_OBJECT (jamel_2, image39_JE, "image39_JE");
+  GLADE_HOOKUP_OBJECT (jamel_2, label1_JE, "label1_JE");
+  GLADE_HOOKUP_OBJECT (jamel_2, button_recher_affic_bv_JE, "button_recher_affic_bv_JE");
+  GLADE_HOOKUP_OBJECT (jamel_2, image42, "image42");
+  GLADE_HOOKUP_OBJECT (jamel_2, entry_recher_id_agent, "entry_recher_id_agent");
+  GLADE_HOOKUP_OBJECT (jamel_2, entry_recher_munic, "entry_recher_munic");
+  GLADE_HOOKUP_OBJECT (jamel_2, entry_recher_id_bureau, "entry_recher_id_bureau");
+  GLADE_HOOKUP_OBJECT (jamel_2, check_id_agent, "check_id_agent");
+  GLADE_HOOKUP_OBJECT (jamel_2, check_municipalite_JE, "check_municipalite_JE");
+  GLADE_HOOKUP_OBJECT (jamel_2, check_id_bureau_JE, "check_id_bureau_JE");
+  GLADE_HOOKUP_OBJECT (jamel_2, check_ecole_JE, "check_ecole_JE");
+  GLADE_HOOKUP_OBJECT (jamel_2, label_verif_JE, "label_verif_JE");
+  GLADE_HOOKUP_OBJECT (jamel_2, label104_JE, "label104_JE");
+  GLADE_HOOKUP_OBJECT (jamel_2, actualiser_JE, "actualiser_JE");
+  GLADE_HOOKUP_OBJECT (jamel_2, image65, "image65");
 
-  return jamel2;
+  return jamel_2;
 }
 
 GtkWidget*

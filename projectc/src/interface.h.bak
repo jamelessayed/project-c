@@ -10,7 +10,7 @@ GtkWidget* create_maissa_3 (void);
 GtkWidget* create_maissa_4 (void);
 GtkWidget* create_Louay2 (void);
 GtkWidget* create_Jamel1 (void);
-GtkWidget* create_jamel2 (void);
+GtkWidget* create_jamel_2 (void);
 GtkWidget* create_WindowAzizUserLogin (void);
 GtkWidget* create_windowAdminConnected (void);
 GtkWidget* create_windowGestionnaireUtilisateurs (void);

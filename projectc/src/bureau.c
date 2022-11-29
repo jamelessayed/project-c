@@ -91,7 +91,7 @@ return b;
 int chercher_id_bureau(int id, char * filename){
 bureau b; 
     FILE * f1=fopen(filename, "r");
-    FILE * f2=fopen("recherche.txt", "w");
+    FILE * f2=fopen("/home/jamel/Downloads/projectc/src/recherche.txt", "w");
  if(f1!=NULL && f2!=NULL )
     {
 while(fscanf(f1,"%d %s %s %d %d %d %d\n",&b.id_bureau,b.municipalite,b.ecole,&b.num_salle,&b.id_agent,&b.capacite_des_observateurs,&b.capacite_des_electeurs)!=EOF)
@@ -114,7 +114,7 @@ return 0;
 int chercher_id_agent(int id, char * filename){
 bureau b; 
     FILE * f1=fopen(filename, "r");
-    FILE * f2=fopen("recherche.txt", "w");
+    FILE * f2=fopen("/home/jamel/Downloads/projectc/src/recherche.txt", "w");
  if(f1!=NULL && f2!=NULL )
     {
 while(fscanf(f1,"%d %s %s %d %d %d %d\n",&b.id_bureau,b.municipalite,b.ecole,&b.num_salle,&b.id_agent,&b.capacite_des_observateurs,&b.capacite_des_electeurs)!=EOF)
@@ -136,7 +136,7 @@ return 0;
 int chercher_municipalite(char municipalite[], char * filename){
 bureau b; 
     FILE * f1=fopen(filename, "r");
-    FILE * f2=fopen("recherche.txt", "w");
+    FILE * f2=fopen("/home/jamel/Downloads/projectc/src/recherche.txt", "w");
  if(f1!=NULL && f2!=NULL )
     {
 while(fscanf(f1,"%d %s %s %d %d %d %d\n",&b.id_bureau,b.municipalite,b.ecole,&b.num_salle,&b.id_agent,&b.capacite_des_observateurs,&b.capacite_des_electeurs)!=EOF)
@@ -159,7 +159,7 @@ return 0;
 int chercher_ecole(char ecole[], char * filename){
 bureau b; 
     FILE * f1=fopen(filename, "r");
-    FILE * f2=fopen("recherche.txt", "w");
+    FILE * f2=fopen("/home/jamel/Downloads/projectc/src/recherche.txt", "w");
  if(f1!=NULL && f2!=NULL )
     {
 while(fscanf(f1,"%d %s %s %d %d %d %d\n",&b.id_bureau,b.municipalite,b.ecole,&b.num_salle,&b.id_agent,&b.capacite_des_observateurs,&b.capacite_des_electeurs)!=EOF)
@@ -181,7 +181,7 @@ return 0;
 int chercher_ecole_munic(char ecole[],char municipalite[], char * filename){
 bureau b; 
     FILE * f1=fopen(filename, "r");
-    FILE * f2=fopen("recherche.txt", "w");
+    FILE * f2=fopen("/home/jamel/Downloads/projectc/src/recherche.txt", "w");
  if(f1!=NULL && f2!=NULL )
     {
 while(fscanf(f1,"%d %s %s %d %d %d %d\n",&b.id_bureau,b.municipalite,b.ecole,&b.num_salle,&b.id_agent,&b.capacite_des_observateurs,&b.capacite_des_electeurs)!=EOF)
@@ -204,7 +204,7 @@ return 0;
 int chercher_ecole_munic_bv(int bv,char ecole[],char municipalite[], char * filename){
 bureau b; 
     FILE * f1=fopen(filename, "r");
-    FILE * f2=fopen("recherche.txt", "w");
+    FILE * f2=fopen("/home/jamel/Downloads/projectc/src/recherche.txt", "w");
  if(f1!=NULL && f2!=NULL )
     {
 while(fscanf(f1,"%d %s %s %d %d %d %d\n",&b.id_bureau,b.municipalite,b.ecole,&b.num_salle,&b.id_agent,&b.capacite_des_observateurs,&b.capacite_des_electeurs)!=EOF)
@@ -227,7 +227,7 @@ return 0;
 int chercher_ecole_munic_bv_ag(int bv,int ag ,char ecole[],char municipalite[], char * filename){
 bureau b; 
     FILE * f1=fopen(filename, "r");
-    FILE * f2=fopen("recherche.txt", "w");
+    FILE * f2=fopen("/home/jamel/Downloads/projectc/src/recherche.txt", "w");
  if(f1!=NULL && f2!=NULL )
     {
 while(fscanf(f1,"%d %s %s %d %d %d %d\n",&b.id_bureau,b.municipalite,b.ecole,&b.num_salle,&b.id_agent,&b.capacite_des_observateurs,&b.capacite_des_electeurs)!=EOF)
@@ -249,7 +249,7 @@ return 0;
 int chercher_bv_ag(int bv,int ag , char * filename){
 bureau b; 
     FILE * f1=fopen(filename, "r");
-    FILE * f2=fopen("recherche.txt", "w");
+    FILE * f2=fopen("/home/jamel/Downloads/projectc/src/recherche.txt", "w");
  if(f1!=NULL && f2!=NULL )
     {
 while(fscanf(f1,"%d %s %s %d %d %d %d\n",&b.id_bureau,b.municipalite,b.ecole,&b.num_salle,&b.id_agent,&b.capacite_des_observateurs,&b.capacite_des_electeurs)!=EOF)
@@ -268,6 +268,140 @@ fclose(f2);
 return 0;
 
 }
+int chercher_ecole_bv(int bv ,char ecole[], char * filename){
+bureau b; 
+    FILE * f1=fopen(filename, "r");
+    FILE * f2=fopen("recherche.txt", "w");
+ if(f1!=NULL && f2!=NULL )
+    {
+while(fscanf(f1,"%d %s %s %d %d %d %d\n",&b.id_bureau,b.municipalite,b.ecole,&b.num_salle,&b.id_agent,&b.capacite_des_observateurs,&b.capacite_des_electeurs)!=EOF)
+{
+
+	if((strcmp(b.ecole,ecole)==0 )&&  (bv==b.id_bureau) )
+		fprintf(f2,"%d %s %s %d %d %d %d\n",b.id_bureau,b.municipalite,b.ecole,b.num_salle,b.id_agent,b.capacite_des_observateurs,b.capacite_des_electeurs);
+	
+}
+
+
+fclose(f1);
+fclose(f2);
+}
+
+return 0;
+
+}
+int chercher_ecole_ag(int ag ,char ecole[], char * filename){
+bureau b; 
+    FILE * f1=fopen(filename, "r");
+    FILE * f2=fopen("recherche.txt", "w");
+ if(f1!=NULL && f2!=NULL )
+    {
+while(fscanf(f1,"%d %s %s %d %d %d %d\n",&b.id_bureau,b.municipalite,b.ecole,&b.num_salle,&b.id_agent,&b.capacite_des_observateurs,&b.capacite_des_electeurs)!=EOF)
+{
+
+	if((strcmp(b.ecole,ecole)==0 ) && (ag==b.id_agent) )
+		fprintf(f2,"%d %s %s %d %d %d %d\n",b.id_bureau,b.municipalite,b.ecole,b.num_salle,b.id_agent,b.capacite_des_observateurs,b.capacite_des_electeurs);
+	
+}
+
+
+fclose(f1);
+fclose(f2);
+}
+
+return 0;
+
+}
+int chercher_ecole_bv_ag(int bv,int ag ,char ecole[], char * filename){
+bureau b; 
+    FILE * f1=fopen(filename, "r");
+    FILE * f2=fopen("recherche.txt", "w");
+ if(f1!=NULL && f2!=NULL )
+    {
+while(fscanf(f1,"%d %s %s %d %d %d %d\n",&b.id_bureau,b.municipalite,b.ecole,&b.num_salle,&b.id_agent,&b.capacite_des_observateurs,&b.capacite_des_electeurs)!=EOF)
+{
+
+	if((strcmp(b.ecole,ecole)==0 )&& (bv==b.id_bureau) && (ag==b.id_agent) )
+		fprintf(f2,"%d %s %s %d %d %d %d\n",b.id_bureau,b.municipalite,b.ecole,b.num_salle,b.id_agent,b.capacite_des_observateurs,b.capacite_des_electeurs);
+	
+}
+
+
+fclose(f1);
+fclose(f2);
+}
+
+return 0;
+
+}
+int chercher_ecole_munic_ag(int ag ,char ecole[],char municipalite[], char * filename){
+bureau b; 
+    FILE * f1=fopen(filename, "r");
+    FILE * f2=fopen("recherche.txt", "w");
+ if(f1!=NULL && f2!=NULL )
+    {
+while(fscanf(f1,"%d %s %s %d %d %d %d\n",&b.id_bureau,b.municipalite,b.ecole,&b.num_salle,&b.id_agent,&b.capacite_des_observateurs,&b.capacite_des_electeurs)!=EOF)
+{
+
+	if((strcmp(b.ecole,ecole)==0 )&& (strcmp(b.municipalite,municipalite)==0) && (ag==b.id_agent) )
+		fprintf(f2,"%d %s %s %d %d %d %d\n",b.id_bureau,b.municipalite,b.ecole,b.num_salle,b.id_agent,b.capacite_des_observateurs,b.capacite_des_electeurs);
+	
+}
+
+
+fclose(f1);
+fclose(f2);
+}
+
+return 0;
+
+}
+int chercher_munic_ag(int ag,char municipalite[], char * filename){
+bureau b; 
+    FILE * f1=fopen(filename, "r");
+    FILE * f2=fopen("recherche.txt", "w");
+ if(f1!=NULL && f2!=NULL )
+    {
+while(fscanf(f1,"%d %s %s %d %d %d %d\n",&b.id_bureau,b.municipalite,b.ecole,&b.num_salle,&b.id_agent,&b.capacite_des_observateurs,&b.capacite_des_electeurs)!=EOF)
+{
+
+	if((strcmp(b.municipalite,municipalite)==0) && (ag==b.id_agent) )
+		fprintf(f2,"%d %s %s %d %d %d %d\n",b.id_bureau,b.municipalite,b.ecole,b.num_salle,b.id_agent,b.capacite_des_observateurs,b.capacite_des_electeurs);
+	
+}
+
+
+fclose(f1);
+fclose(f2);
+}
+
+return 0;
+
+}
+
+int chercher_munic_bv(int bv,char municipalite[], char * filename){
+bureau b; 
+    FILE * f1=fopen(filename, "r");
+    FILE * f2=fopen("recherche.txt", "w");
+ if(f1!=NULL && f2!=NULL )
+    {
+while(fscanf(f1,"%d %s %s %d %d %d %d\n",&b.id_bureau,b.municipalite,b.ecole,&b.num_salle,&b.id_agent,&b.capacite_des_observateurs,&b.capacite_des_electeurs)!=EOF)
+{
+
+	if((strcmp(b.municipalite,municipalite)==0)	&& (bv==b.id_bureau) )
+		fprintf(f2,"%d %s %s %d %d %d %d\n",b.id_bureau,b.municipalite,b.ecole,b.num_salle,b.id_agent,b.capacite_des_observateurs,b.capacite_des_electeurs);
+	
+}
+
+
+fclose(f1);
+fclose(f2);
+}
+
+return 0;
+
+}
+
 
 
 
@@ -431,6 +565,9 @@ g_object_unref(pListStore);
        }
 }
 }
+
+
+
 
 void afficher_recherche(GtkWidget *pListView)
 {

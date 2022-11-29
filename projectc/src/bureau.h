@@ -22,7 +22,7 @@ int supprimer(int id, char * filename);
 bureau chercher(int id, char * filename);
 
 
-void afficher_recherche(GtkWidget *pListView)
+void afficher_recherche(GtkWidget *pListView);
 
 void afficher_bureau(GtkWidget *pListView);
 
@@ -38,6 +38,16 @@ int chercher_bv_ag(int bv,int ag , char * filename);
 int chercher_ecole_munic_bv_ag(int bv,int ag ,char ecole[],char municipalite[], char * filename);
 int chercher_ecole_munic_bv(int bv,char ecole[],char municipalite[], char * filename);
 int chercher_ecole_munic(char ecole[],char municipalite[], char * filename);
+
+
+
+int chercher_munic_bv(int bv,char municipalite[], char * filename);
+int chercher_munic_ag(int ag,char municipalite[], char * filename);
+int chercher_ecole_munic_ag(int ag ,char ecole[],char municipalite[], char * filename);
+
+int chercher_ecole_bv_ag(int bv,int ag ,char ecole[], char * filename);
+int chercher_ecole_ag(int ag ,char ecole[], char * filename);
+int chercher_ecole_bv(int bv,char ecole[], char * filename);
 
 
 
